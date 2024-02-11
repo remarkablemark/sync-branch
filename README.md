@@ -1,7 +1,7 @@
-# github-actions-composite-template
+# sync-branch
 
-[![version](https://badgen.net/github/release/remarkablemark/github-actions-composite-template)](https://github.com/remarkablemark/github-actions-composite-template/releases)
-[![test](https://github.com/remarkablemark/github-actions-composite-template/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/github-actions-composite-template/actions/workflows/test.yml)
+[![version](https://badgen.net/github/release/remarkablemark/sync-branch)](https://github.com/remarkablemark/sync-branch/releases)
+[![test](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml)
 
 ⚙️ GitHub Actions Composite Template. Inspired by [remarkablemark/hello-world-composite-action](https://github.com/remarkablemark/hello-world-composite-action).
 
@@ -10,11 +10,11 @@
 ```yaml
 on: push
 jobs:
-  github-actions-composite-template:
+  sync-branch:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Actions Composite Template
-        uses: remarkablemark/github-actions-composite-template@v1
+        uses: remarkablemark/sync-branch@v1
 ```
 
 ## Usage
@@ -24,7 +24,7 @@ See [action.yml](action.yml)
 **Basic:**
 
 ```yaml
-- uses: remarkablemark/github-actions-composite-template@v1
+- uses: remarkablemark/sync-branch@v1
 ```
 
 ## Inputs
@@ -34,7 +34,7 @@ See [action.yml](action.yml)
 **Optional**: The version. Defaults to `1.2.3`:
 
 ```yaml
-- uses: remarkablemark/github-actions-composite-template@v1
+- uses: remarkablemark/sync-branch@v1
   with:
     version: 1.2.3
 ```

@@ -1,4 +1,4 @@
-name: github-actions-composite-template
+name: sync-branch
 description: GitHub Actions Composite Template
 author: remarkablemark
 inputs:
