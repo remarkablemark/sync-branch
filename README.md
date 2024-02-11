@@ -2,8 +2,9 @@
 
 [![version](https://badgen.net/github/release/remarkablemark/sync-branch)](https://github.com/remarkablemark/sync-branch/releases)
 [![test](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-⚙️ GitHub Actions Composite Template. Inspired by [remarkablemark/hello-world-composite-action](https://github.com/remarkablemark/hello-world-composite-action).
+:octocat: Sync branch with GitHub Actions.
 
 ## Quick Start
 
