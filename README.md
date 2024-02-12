@@ -87,7 +87,7 @@ Use administrator privileges to merge a pull request that does not meet requirem
 ```
 
 > [!NOTE]
-> The [`token`](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) input must be set for admin merge to work.
+> The [`token`](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) input must be set for `admin` merge to work.
 
 ### `title`
 
