@@ -122,6 +122,10 @@ Use administrator privileges to merge a pull request that does not meet requirem
     token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
+## Examples
+
+- [remarkablemark/sync-branch-demo](https://github.com/remarkablemark/sync-branch-demo)
+
 ## Contributions
 
 Contributions are welcome!
