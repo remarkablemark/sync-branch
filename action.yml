@@ -1,4 +1,4 @@
-name: sync-branch
+name: branch-sync
 description: Sync branch with GitHub Actions.
 author: remarkablemark
 
@@ -73,4 +73,4 @@ runs:
 
 branding:
   icon: git-merge
-  color: white
+  color: purple
