@@ -67,7 +67,7 @@ See [action.yml](action.yml)
 
 ### `merge`
 
-**Optional**: The merge method (merge, squash, rebase). Defaults to `merge`.
+**Optional**: The merge method (`merge`, `squash`, `rebase`, `admin`). Defaults to `merge`.
 
 ```yaml
 - uses: remarkablemark/sync-branch@v1
@@ -76,20 +76,18 @@ See [action.yml](action.yml)
     merge: squash
 ```
 
-### `admin`
-
-**Optional**: Use administrator privileges to merge a pull request that does not meet requirements. Defaults to `false`.
+Use administrator privileges to merge a pull request that does not meet requirements:
 
 ```yaml
 - uses: remarkablemark/sync-branch@v1
   with:
     base: my-base-branch
-    merge: squash
+    merge: admin
     token: ${{ secrets.PAT }}
 ```
 
 > [!NOTE]
-> The [`token`](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) input must be set on this action for this to work.
+> The [`token`](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) input must be set for admin merge to work.
 
 ### `title`
 

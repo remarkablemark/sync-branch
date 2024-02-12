@@ -22,6 +22,9 @@ jobs:
           git checkout -b ${{ env.TEST_BRANCH }}
           git push origin ${{ env.TEST_BRANCH }}
 
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Run action
         uses: ./
         with:
