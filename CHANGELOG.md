@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/remarkablemark/sync-branch/compare/v1.0.0...v1.0.1) (2024-02-12)
+
+
+### Bug Fixes
+
+* **action:** checkout repository ([8307805](https://github.com/remarkablemark/sync-branch/commit/83078057af7d53e81f9b04b6212638162086ed8e))
+
 ## 1.0.0 (2024-02-12)
 
 
