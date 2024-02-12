@@ -1,4 +1,4 @@
-name: branch-sync
+name: sync-branch-github-action
 description: Sync branch with GitHub Actions.
 author: remarkablemark
 
