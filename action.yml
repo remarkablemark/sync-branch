@@ -70,7 +70,7 @@ runs:
       run: >
         gh pr merge ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
         ${{ format('--{0}', inputs.merge) }}
-        ${{ inputs.admin != 'true' && '--auto' }}
+        ${{ inputs.merge != 'admin' && '--auto' }}
       env:
         GH_TOKEN: ${{ inputs.token }}
 
