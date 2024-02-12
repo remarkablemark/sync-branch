@@ -3,19 +3,30 @@ on: [push, pull_request]
 
 jobs:
   test:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    env:
+      TEST_BRANCH: test-${{ github.run_id }}-${{ matrix.os }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Checkout test branch
+        run: |
+          git checkout HEAD^
+          git checkout -b ${{ env.TEST_BRANCH }}
+          git push origin ${{ env.TEST_BRANCH }}
 
       - name: Run action
         uses: ./
-
-      - name: Run action with version
-        uses: ./
         with:
-          version: 2.3.4
+          base: ${{ env.TEST_BRANCH }}
+
+      - name: Delete test branch
+        if: always()
+        run: git push origin --delete ${{ env.TEST_BRANCH }}

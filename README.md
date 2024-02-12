@@ -4,18 +4,30 @@
 [![test](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/sync-branch/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-:octocat: Sync branch with GitHub Actions.
+🤖 Sync branch with GitHub Actions.
+
+> [!NOTE]
+> To use this action, make sure to enable **Settings** > **Actions** > **General** > **Workflow permissions**:
+> - **Read and write permissions**
+> - **Allow GitHub Actions to create and approve pull requests**
 
 ## Quick Start
 
+Merge `master` to `dev`:
+
 ```yaml
-on: push
+on:
+  push:
+    branches:
+      - master
 jobs:
   sync-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: GitHub Actions Composite Template
+      - name: Sync Branch
         uses: remarkablemark/sync-branch@v1
+        with:
+          base: dev
 ```
 
 ## Usage
@@ -26,18 +38,90 @@ See [action.yml](action.yml)
 
 ```yaml
 - uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
 ```
 
 ## Inputs
 
-### `version`
+### `base`
 
-**Optional**: The version. Defaults to `1.2.3`:
+**Required**: The base branch.
 
 ```yaml
 - uses: remarkablemark/sync-branch@v1
   with:
-    version: 1.2.3
+    base: my-base-branch
+```
+
+### `head`
+
+**Optional**: The head branch. Defaults to the repository default branch (e.g., `master` or `main`).
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    head: my-head-branch
+```
+
+### `merge`
+
+**Optional**: The merge method (merge, squash, rebase). Defaults to `merge`.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    merge: squash
+```
+
+### `admin`
+
+**Optional**: Use administrator privileges to merge a pull request that does not meet requirements. Defaults to `false`.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    merge: squash
+    token: ${{ secrets.PAT }}
+```
+
+> [!NOTE]
+> The [`token`](https://docs.github.com/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) input must be set on this action for this to work.
+
+### `title`
+
+**Optional**: The pull request title.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    title: My PR title
+```
+
+### `body`
+
+**Optional**: The pull request body.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    body: My PR body
+```
+
+### `token`
+
+**Optional**: The GitHub token.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Contributions
