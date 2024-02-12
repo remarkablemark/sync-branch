@@ -1,17 +1,57 @@
 name: sync-branch
-description: GitHub Actions Composite Template
+description: Sync branch with GitHub Actions.
 author: remarkablemark
+
 inputs:
-  version:
-    description: Description
-    default: 1.2.3
+  base:
+    description: Base branch
+    required: true
+  head:
+    description: Head branch (e.g., master)
+    default: ${{ github.event.repository.default_branch }}
+  merge:
+    description: Merge method (merge, squash, rebase)
+    default: merge
+  admin:
+    description: Use administrator privileges to merge a pull request that does not meet requirements
+    default: false
+  title:
+    description: Pull request title
+    default: 'chore(sync): ${{ inputs.head }} to ${{ inputs.base }}'
+  body:
+    description: Pull request body
+    default: '🤖 sync-branch: merging ${{ inputs.head }} to ${{ inputs.base }}'
+  token:
+    description: GitHub token
+    default: ${{ github.token }}
+
 runs:
   using: composite
+  env:
+    GH_TOKEN: ${{ inputs.token }}
+
   steps:
-    - name: Print version
+    - name: Create pull request
+      id: pull_request
+      continue-on-error: true
       shell: bash
       run: |
-        echo 'version: ${{ inputs.version }}'
+        PULL_REQUEST_URL=$(
+          gh pr create \
+            --base ${{ inputs.base }} \
+            --head ${{ inputs.head }} \
+            --title ${{ inputs.title }} \
+            --body ${{ inputs.body }}
+        )
+        echo "PULL_REQUEST_URL=$PULL_REQUEST_URL" >> $GITHUB_OUTPUT
+
+    - name: Merge pull request
+      if: ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
+      shell: bash
+      run: >
+        gh pr merge ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
+        ${{ inputs.admin == 'true' && '--admin' || '--${{ inputs.merge }} --auto' }}
+
 branding:
-  icon: activity
+  icon: git-merge
   color: white
