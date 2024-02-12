@@ -39,7 +39,7 @@ runs:
         PULL_REQUEST_BODY=${{ toJSON(inputs.body) }}
         if [ "$PULL_REQUEST_BODY" == '' ]; then
           PULL_REQUEST_BODY=$(cat <<EOF
-        🤖 sync-branch: merging ${{ inputs.head }} to ${{ inputs.base }}
+        🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging __${{ inputs.head }}__ to __${{ inputs.base }}__
         EOF
         )
         fi
