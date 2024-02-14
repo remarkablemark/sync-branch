@@ -10,7 +10,7 @@ inputs:
     description: Head branch (e.g., master)
     default: ${{ github.event.repository.default_branch }}
   merge:
-    description: Merge method (merge, squash, rebase, admin)
+    description: Merge method (merge, squash, rebase)
     default: merge
   title:
     description: Pull request title
@@ -18,6 +18,8 @@ inputs:
     description: Pull request body
   delete-branch:
     description: Delete the local and remote branch after merge
+  admin:
+    description: Use administrator privileges to merge a pull request that does not meet requirements
   token:
     description: GitHub token
     default: ${{ github.token }}
@@ -72,7 +74,7 @@ runs:
       run: >
         gh pr merge ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
         ${{ format('--{0}', inputs.merge) }}
-        ${{ inputs.merge != 'admin' && '--auto' || '' }}
+        ${{ inputs.admin == 'true' && '--admin' || '' }}
         ${{ inputs.delete-branch == 'true' && '--delete-branch' || '' }}
       env:
         GH_TOKEN: ${{ inputs.token }}
