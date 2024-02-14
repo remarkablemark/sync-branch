@@ -111,6 +111,17 @@ Use administrator privileges to merge a pull request that does not meet requirem
     body: My PR body
 ```
 
+### `delete-branch`
+
+**Optional**: Delete the local and remote branch after merge. Defaults to `false`.
+
+```yaml
+- uses: remarkablemark/sync-branch@v1
+  with:
+    base: my-base-branch
+    delete-branch: true
+```
+
 ### `token`
 
 **Optional**: The GitHub token.

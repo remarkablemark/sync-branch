@@ -29,7 +29,9 @@ jobs:
         uses: ./
         with:
           base: ${{ env.TEST_BRANCH }}
+          delete-branch: true
 
       - name: Delete test branch
         if: always()
         run: git push origin --delete ${{ env.TEST_BRANCH }}
+        continue-on-error: true
