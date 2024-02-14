@@ -16,6 +16,8 @@ inputs:
     description: Pull request title
   body:
     description: Pull request body
+  delete-branch:
+    description: Delete the local and remote branch after merge
   token:
     description: GitHub token
     default: ${{ github.token }}
@@ -71,6 +73,7 @@ runs:
         gh pr merge ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
         ${{ format('--{0}', inputs.merge) }}
         ${{ inputs.merge != 'admin' && '--auto' }}
+        ${{ inputs.delete-branch == 'true' && '--delete-branch' }}
       env:
         GH_TOKEN: ${{ inputs.token }}
 
