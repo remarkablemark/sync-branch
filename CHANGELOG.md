@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.0](https://github.com/remarkablemark/sync-branch/compare/v1.0.2...v1.1.0) (2024-02-14)
+
+
+### Features
+
+* **action:** add option `delete-branch` ([eba572e](https://github.com/remarkablemark/sync-branch/commit/eba572e8037d4a4ee4e09250f5cff965fe884565))
+
+
+### Bug Fixes
+
+* **actions:** don't pass false as an argument ([c4db572](https://github.com/remarkablemark/sync-branch/commit/c4db57270f3fc7ef5790c0786f17126d8a7b9ee3))
+
 ## [1.0.2](https://github.com/remarkablemark/sync-branch/compare/v1.0.1...v1.0.2) (2024-02-12)
 
 
