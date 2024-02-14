@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/remarkablemark/sync-branch/compare/v1.1.0...v1.1.1) (2024-02-14)
+
+
+### Bug Fixes
+
+* **actions:** fix admin input ([ba9b032](https://github.com/remarkablemark/sync-branch/commit/ba9b03238f3645713df2d66dfe53ae989e12169d))
+
 ## [1.1.0](https://github.com/remarkablemark/sync-branch/compare/v1.0.2...v1.1.0) (2024-02-14)
 
 
