@@ -8,8 +8,8 @@
 
 > [!NOTE]
 > To use this action, make sure to enable **Settings** > **Actions** > **General** > **Workflow permissions**:
-> - **Read and write permissions**
-> - **Allow GitHub Actions to create and approve pull requests**
+> - [x] **Read and write permissions**
+> - [x] **Allow GitHub Actions to create and approve pull requests**
 
 ## Quick Start
 
@@ -138,10 +138,6 @@ See [action.yml](action.yml)
 ## Examples
 
 - [remarkablemark/sync-branch-demo](https://github.com/remarkablemark/sync-branch-demo)
-
-## Contributions
-
-Contributions are welcome!
 
 ## License
 
