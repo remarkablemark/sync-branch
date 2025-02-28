@@ -30,26 +30,6 @@ runs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Get pull request inputs
-      id: inputs
-      shell: bash
-      run: |
-        PULL_REQUEST_TITLE=${{ toJSON(inputs.title) }}
-        if [[ "$PULL_REQUEST_TITLE" == '' ]]; then
-          PULL_REQUEST_TITLE=${{ toJSON(format(
-            'chore(sync-branch): merge {0} to {1}', inputs.head, inputs.base
-          )) }}
-        fi
-        echo "PULL_REQUEST_TITLE=$PULL_REQUEST_TITLE" >> $GITHUB_OUTPUT
-
-        PULL_REQUEST_BODY=${{ toJSON(inputs.body) }}
-        if [[ "$PULL_REQUEST_BODY" == '' ]]; then
-          PULL_REQUEST_BODY=${{ toJSON(format(
-            '🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging __{0}__ to __{1}__', inputs.head, inputs.base
-          )) }}
-        fi
-        echo "PULL_REQUEST_BODY=$PULL_REQUEST_BODY" >> $GITHUB_OUTPUT
-
     - name: Create pull request
       id: pull_request
       continue-on-error: true
@@ -59,12 +39,16 @@ runs:
           gh pr create \
             --base ${{ toJSON(inputs.base) }} \
             --head ${{ toJSON(inputs.head) }} \
-            --title ${{ toJSON(steps.inputs.outputs.PULL_REQUEST_TITLE) }} \
-            --body ${{ toJSON(steps.inputs.outputs.PULL_REQUEST_BODY) }}
+            --title "$PULL_REQUEST_TITLE" \
+            --body "$PULL_REQUEST_BODY"
         )
         echo "PULL_REQUEST_URL=$PULL_REQUEST_URL" >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ inputs.token }}
+        PULL_REQUEST_TITLE: >-
+          ${{ inputs.title || format('chore(sync-branch): merge {0} to {1}', inputs.head, inputs.base) }}
+        PULL_REQUEST_BODY: >-
+          ${{ inputs.body || format('🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging __{0}__ to __{1}__', inputs.head, inputs.base) }}
 
     - name: Merge pull request
       if: ${{ steps.pull_request.outputs.PULL_REQUEST_URL }}
