@@ -8,7 +8,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     env:
-      TEST_BRANCH: test-${{ github.run_id }}-${{ matrix.os }}
+      BRANCH_TEST: test/${{ matrix.os }}-${{ github.run_id }}
 
     steps:
       - name: Checkout repository
@@ -19,8 +19,8 @@ jobs:
       - name: Checkout test branch
         run: |
           git checkout HEAD^
-          git checkout -b ${{ env.TEST_BRANCH }}
-          git push origin ${{ env.TEST_BRANCH }}
+          git checkout -b ${{ env.BRANCH_TEST }}
+          git push origin ${{ env.BRANCH_TEST }}
 
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,8 +28,8 @@ jobs:
       - name: Run action
         uses: ./
         with:
-          base: ${{ env.TEST_BRANCH }}
+          base: ${{ env.BRANCH_TEST }}
 
       - name: Delete test branch
         if: always()
-        run: git push origin --delete ${{ env.TEST_BRANCH }}
+        run: git push origin --delete ${{ env.BRANCH_TEST }}
