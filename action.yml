@@ -39,7 +39,6 @@ runs:
           PULL_REQUEST_TITLE=${{ toJSON(format(
             'chore(sync-branch): merge {0} to {1}', inputs.head, inputs.base
           )) }}
-        )
         fi
         echo "PULL_REQUEST_TITLE=$PULL_REQUEST_TITLE" >> $GITHUB_OUTPUT
 
@@ -48,7 +47,6 @@ runs:
           PULL_REQUEST_BODY=${{ toJSON(format(
             '🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging __{0}__ to __{1}__', inputs.head, inputs.base
           )) }}
-        )
         fi
         echo "PULL_REQUEST_BODY=$PULL_REQUEST_BODY" >> $GITHUB_OUTPUT
 
