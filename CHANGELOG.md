@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/remarkablemark/sync-branch/compare/v1.1.2...v1.2.0) (2025-02-28)
+
+
+### Features
+
+* **action:** wrap inputs head and base in backticks (code style) ([3748fb8](https://github.com/remarkablemark/sync-branch/commit/3748fb8acf5756427361c6a2a24fd65532e979b8))
+
 ## [1.1.2](https://github.com/remarkablemark/sync-branch/compare/v1.1.1...v1.1.2) (2025-02-28)
 
 
