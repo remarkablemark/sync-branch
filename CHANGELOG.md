@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.2](https://github.com/remarkablemark/sync-branch/compare/v1.1.1...v1.1.2) (2025-02-28)
+
+
+### Bug Fixes
+
+* **action:** escape inputs title and body ([c576f8a](https://github.com/remarkablemark/sync-branch/commit/c576f8adf3030702461df4797ce2f5ce268bd7e5))
+* **action:** escape inputs to mitigate script injection attacks ([528ad95](https://github.com/remarkablemark/sync-branch/commit/528ad95124fa86b9134c8cc0b332729952a130c5))
+
 ## [1.1.1](https://github.com/remarkablemark/sync-branch/compare/v1.1.0...v1.1.1) (2024-02-14)
 
 
