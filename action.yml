@@ -36,18 +36,14 @@ runs:
       run: |
         PULL_REQUEST_TITLE=${{ toJSON(inputs.title) }}
         if [[ "$PULL_REQUEST_TITLE" == '' ]]; then
-          PULL_REQUEST_TITLE=$(cat<<EOF
-        chore(sync-branch): merge \`${{ inputs.head }}\` to \`${{ inputs.base }}\`
-        EOF
+          PULL_REQUEST_TITLE=${{ format('chore(sync-branch): merge \`{0}\` to \`{1}\`', inputs.head, inputs.base) }}
         )
         fi
         echo "PULL_REQUEST_TITLE=$PULL_REQUEST_TITLE" >> $GITHUB_OUTPUT
 
         PULL_REQUEST_BODY=${{ toJSON(inputs.body) }}
         if [[ "$PULL_REQUEST_BODY" == '' ]]; then
-          PULL_REQUEST_BODY=$(cat<<EOF
-        🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging \`${{ inputs.head }}\` to \`${{ inputs.base }}\`
-        EOF
+          PULL_REQUEST_BODY=${{ format('🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging \`{0}\` to \`{1}\`', inputs.head, inputs.base) }}
         )
         fi
         echo "PULL_REQUEST_BODY=$PULL_REQUEST_BODY" >> $GITHUB_OUTPUT
