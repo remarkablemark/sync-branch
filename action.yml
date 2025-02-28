@@ -35,7 +35,7 @@ runs:
       shell: bash
       run: |
         PULL_REQUEST_TITLE=${{ toJSON(inputs.title) }}
-        if [ "$PULL_REQUEST_TITLE" == '' ]; then
+        if [[ "$PULL_REQUEST_TITLE" == '' ]]; then
           PULL_REQUEST_TITLE=$(cat <<EOF
         chore(sync-branch): merge ${{ inputs.head }} to ${{ inputs.base }}
         EOF
@@ -44,7 +44,7 @@ runs:
         echo "PULL_REQUEST_TITLE=$PULL_REQUEST_TITLE" >> $GITHUB_OUTPUT
 
         PULL_REQUEST_BODY=${{ toJSON(inputs.body) }}
-        if [ "$PULL_REQUEST_BODY" == '' ]; then
+        if [[ "$PULL_REQUEST_BODY" == '' ]]; then
           PULL_REQUEST_BODY=$(cat <<EOF
         🤖 [sync-branch](https://github.com/remarkablemark/sync-branch): merging __${{ inputs.head }}__ to __${{ inputs.base }}__
         EOF
@@ -59,8 +59,8 @@ runs:
       run: |
         PULL_REQUEST_URL=$(
           gh pr create \
-            --base ${{ inputs.base }} \
-            --head ${{ inputs.head }} \
+            --base ${{ toJSON(inputs.base) }} \
+            --head ${{ toJSON(inputs.head) }} \
             --title ${{ toJSON(steps.inputs.outputs.PULL_REQUEST_TITLE) }} \
             --body ${{ toJSON(steps.inputs.outputs.PULL_REQUEST_BODY) }}
         )
