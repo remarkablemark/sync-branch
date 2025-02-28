@@ -32,15 +32,16 @@ jobs:
 
 ## Usage
 
-See [action.yml](action.yml)
-
-**Basic:**
+Sync `staging` with `production` branch:
 
 ```yaml
 - uses: remarkablemark/sync-branch@v1
   with:
-    base: my-base-branch
+    base: staging
+    head: production
 ```
+
+See [action.yml](action.yml)
 
 ## Inputs
 
