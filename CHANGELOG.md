@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/remarkablemark/sync-branch/compare/v1.2.0...v1.2.1) (2025-08-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** bump actions/checkout from 4 to 5 ([#102](https://github.com/remarkablemark/sync-branch/issues/102)) ([bcf91cc](https://github.com/remarkablemark/sync-branch/commit/bcf91cc3b61d3c24a93405966b7ee2d3ff6a8692))
+
 ## [1.2.0](https://github.com/remarkablemark/sync-branch/compare/v1.1.2...v1.2.0) (2025-02-28)
 
 
